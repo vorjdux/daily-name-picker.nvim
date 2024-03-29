@@ -94,11 +94,6 @@ function M.open_full_screen_popup()
 	})
 
 	vim.api.nvim_win_set_option(M.window_id, "winblend", 20) -- Optional: make the window slightly transparent
-
-	-- Set title for the popup window
-	local title = "Daily Names Draw"
-	local titlePadding = string.rep(" ", math.floor((width - string.len(title)) / 2)) -- Center the title
-	vim.api.nvim_buf_set_lines(M.buffer_id, 0, -1, false, { titlePadding .. title })
 end
 
 -- Close the popup window
@@ -117,10 +112,15 @@ function M.display_names()
 	vim.api.nvim_buf_set_option(M.buffer_id, "modifiable", true)
 	vim.api.nvim_buf_set_lines(M.buffer_id, 0, -1, false, {})
 
-	local empty_lines = { "", "", "", "" } -- Four empty lines for padding
-	vim.api.nvim_buf_set_lines(M.buffer_id, 0, -1, false, empty_lines)
+	local title = "Daily Name Draw"
 
 	local width = vim.api.nvim_win_get_width(M.window_id)
+	local titlePadding = string.rep(" ", math.floor((width - string.len(title)) / 2))
+	-- Set the title as the first line of the buffer
+	vim.api.nvim_buf_set_lines(M.buffer_id, 0, 0, false, { titlePadding .. title })
+
+	local empty_lines = { "", "", "", "" } -- Four empty lines for padding
+	vim.api.nvim_buf_set_lines(M.buffer_id, 0, -1, false, empty_lines)
 
 	for i, name in ipairs(M.names_list) do
 		local padding = math.floor((width - string.len(name)) / 2)
