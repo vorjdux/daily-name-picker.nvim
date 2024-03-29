@@ -94,6 +94,11 @@ function M.open_full_screen_popup()
 	})
 
 	vim.api.nvim_win_set_option(M.window_id, "winblend", 20) -- Optional: make the window slightly transparent
+
+	-- Set title for the popup window
+	local title = "Daily Names Draw"
+	local titlePadding = string.rep(" ", math.floor((width - string.len(title)) / 2)) -- Center the title
+	vim.api.nvim_buf_set_lines(M.buffer_id, 0, -1, false, { titlePadding .. title })
 end
 
 -- Close the popup window
