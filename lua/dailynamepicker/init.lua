@@ -79,9 +79,6 @@ function M.open_full_screen_popup()
 		return -- Do not open another window if one is already open
 	end
 
-	-- Set a random seed for better randomness
-	math.randomseed(os.time())
-
 	M.buffer_id = vim.api.nvim_create_buf(false, true)
 	local width = vim.api.nvim_get_option("columns")
 	local height = vim.api.nvim_get_option("lines")
@@ -169,6 +166,9 @@ function M.pick_random_name()
 		print("All names have been used.")
 		return
 	end
+
+	-- Set a random seed for better randomness
+	math.randomseed(os.time())
 
 	local picked_index = math.random(#unused_names)
 	local picked_name = unused_names[picked_index]
