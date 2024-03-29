@@ -79,6 +79,9 @@ function M.open_full_screen_popup()
 		return -- Do not open another window if one is already open
 	end
 
+	-- Set a random seed for better randomness
+	math.randomseed(os.time())
+
 	M.buffer_id = vim.api.nvim_create_buf(false, true)
 	local width = vim.api.nvim_get_option("columns")
 	local height = vim.api.nvim_get_option("lines")
