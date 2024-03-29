@@ -1,5 +1,5 @@
 
-# DailyNamePicker.nvim
+# daily-name-picker.nvim
 
 An interactive Neovim plugin for managing and selecting names from a daily list. Features include loading names from input or files, picking random names, and unpicking names. Enhance your daily workflow with ease and flexibility.
 
@@ -8,13 +8,13 @@ An interactive Neovim plugin for managing and selecting names from a daily list.
 **Using Vim-Plug**
 
 ```vim
-Plug 'vorjdux/DailyNamePicker.nvim'
+Plug 'vorjdux/daily-name-picker.nvim'
 ```
 
 **Using Packer**
 
 ```lua
-use {'vorjdux/DailyNamePicker.nvim'}
+use {'vorjdux/daily-name-picker.nvim'}
 ```
 
 ## Usage
