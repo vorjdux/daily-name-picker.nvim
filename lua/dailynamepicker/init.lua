@@ -214,7 +214,10 @@ end
 function M.load_names_from_file(file_path)
 	local lines = {}
 	for line in io.lines(file_path) do
-		table.insert(lines, line)
+		-- Ignore lines that starts with "-"
+		if string.sub(line, 1, 1) ~= "-" then
+			table.insert(lines, line)
+		end
 	end
 	M.names_list = lines
 	M.used_names = {}
